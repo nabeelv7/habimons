@@ -87,7 +87,7 @@ export const habitsTable = sqliteTable("habits", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   name: text("name").notNull(),
   days: integer("days").notNull(),
-  user_id: text("user_id").references(() => users.id),
+  user_id: text("user_id").references(() => users.id, { onDelete: "cascade" }).notNull(),
   createdAt: integer("created_at").$default(() => Date.now()).notNull(),
   updatedAt: integer("updated_at")
     .$default(() => Date.now())
@@ -98,7 +98,7 @@ export const habitsTable = sqliteTable("habits", {
 export const daysTable = sqliteTable("days", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   date: text("date").notNull(),
-  habit_id: integer("habit_id").references(() => habitsTable.id),
+  habit_id: integer("habit_id").references(() => habitsTable.id, { onDelete: "cascade" }).notNull(),
   createdAt: integer("created_at").$default(() => Date.now()).notNull(),
   updatedAt: integer("updated_at")
     .$default(() => Date.now())
@@ -111,7 +111,7 @@ export const habimonsTable = sqliteTable("habimons", {
   image: text("image").notNull(),
   price: integer("price").notNull(),
   rarity: text("rarity").notNull(),
-  user_id: text("user_id").references(() => users.id),
+  user_id: text("user_id").references(() => users.id, { onDelete: "cascade" }).notNull(),
   createdAt: integer("created_at").$default(() => Date.now()).notNull(),
   updatedAt: integer("updated_at")
     .$default(() => Date.now())
