@@ -72,10 +72,12 @@ export const actions: Actions = {
 		const habitId = Number(data.get("habit_id"));
 
 		// Get user id
-		const [{ id: user_id }] = await db
+		const [user] = await db
 			.select()
 			.from(users)
 			.where(eq(users.email, session.user.email));
+		const user_id = user.id;
+		let user_gems = user.gems;
 
 		// Verify habit belongs to this user
 		const habit = await db
@@ -104,6 +106,14 @@ export const actions: Actions = {
 				date: Date.now(),
 				habit_id: habitId,
 			});
+
+			// increase user gems
+			if (daysThisWeek.length > 0) {
+				user_gems = user_gems + 3 * daysThisWeek;
+			} else {
+				user_gems = user_gems + 2;
+			}
+			await db.update(users).set({ gems: user_gems }).where(users.id, user_id);
 		} else {
 			// delete today’s day entry
 			await db

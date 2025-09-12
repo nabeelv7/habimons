@@ -3,7 +3,6 @@
 	import type { PageProps } from "./$types";
 
 	let { data }: PageProps = $props();
-	console.log("YEAHH", data.habits[0].days);
 </script>
 
 <div class="flex justify-center items-center flex-col w-full">
