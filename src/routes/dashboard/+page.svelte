@@ -3,6 +3,7 @@
 	import type { PageProps } from "./$types";
 
 	let { data }: PageProps = $props();
+	console.log("YEAHH", data.habits[0].days);
 </script>
 
 <div class="flex justify-center items-center flex-col w-full">
@@ -22,6 +23,16 @@
 								const input = e.target as HTMLInputElement;
 								input?.form?.requestSubmit();
 							}}
+							checked={// ✅ true if today exists
+							habit.days.some(
+								(day) =>
+									new Date(day.date).toDateString() ===
+									new Date().toDateString(),
+							) ||
+								// ✅ or true if weekly quota is full
+								habit.days.length >= habit.days_of_week}
+							disabled={habit.days.length >= habit.days_of_week}
+							name="done"
 							type="checkbox"
 						/>
 					</form>
