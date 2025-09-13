@@ -5,6 +5,7 @@ import {
 	text,
 	primaryKey,
 } from "drizzle-orm/sqlite-core";
+import { seedMarketPlace } from "./seed";
 
 export const users = sqliteTable("user", {
 	id: text("id")
@@ -122,6 +123,7 @@ export const daysTable = sqliteTable("days", {
 
 export const habimonsTable = sqliteTable("habimons", {
 	id: integer("id").primaryKey({ autoIncrement: true }),
+	name: text("name").notNull(),
 	image: text("image").notNull(),
 	price: integer("price").notNull(),
 	rarity: text("rarity").notNull(),
@@ -139,6 +141,7 @@ export const habimonsTable = sqliteTable("habimons", {
 
 export const marketPlaceTable = sqliteTable("marketplace", {
 	id: integer("id").primaryKey({ autoIncrement: true }),
+	name: text("name").notNull(),
 	image: text("image").notNull(),
 	price: integer("price").notNull(),
 	rarity: text("rarity").notNull(),
@@ -153,8 +156,24 @@ export const marketPlaceTable = sqliteTable("marketplace", {
 });
 
 // relations
-export const habitsRelations = relations(habitsTable, ({ many }) => ({
+export const usersRelations = relations(users, ({ many }) => ({
+	habits: many(habitsTable),
+	habimons: many(habimonsTable),
+}));
+
+export const habitsRelations = relations(habitsTable, ({ many, one }) => ({
 	days: many(daysTable),
+	user: one(users, {
+		fields: [habitsTable.user_id],
+		references: [users.id],
+	}),
+}));
+
+export const habimonsRelations = relations(habimonsTable, ({ one }) => ({
+	user: one(users, {
+		fields: [habimonsTable.user_id],
+		references: [users.id],
+	}),
 }));
 
 export const daysRelations = relations(daysTable, ({ one }) => ({
