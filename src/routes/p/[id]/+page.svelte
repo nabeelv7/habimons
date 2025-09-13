@@ -70,7 +70,7 @@
 </main>
 
 <footer
-	class="fixed bottom-0 right-0 w-full backdrop-blur-2xl py-4 text-center border-t border-t-secondary"
+	class="fixed bottom-0 right-0 w-full backdrop-blur-2xl py-4 text-center border-t border-t-secondary px-5"
 >
 	This is {user.name}'s HabitsZoo profile. Create your own
 	<a class="text-blue-500 underline" href="/">🐫 HabitsZoo</a> account and start
