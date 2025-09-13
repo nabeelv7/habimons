@@ -19,7 +19,7 @@
 		...Array(totalSlots - user.habimons.length).fill(null),
 	];
 
-	const profileLink = `https://${page.url.host}/p/${user.id}`;
+	const profileLink = `${page.url.protocol + "//" + page.url.host + "/p/" + user.id}`;
 
 	const copyLink = async () => {
 		try {
@@ -32,7 +32,7 @@
 </script>
 
 <Dialog.Root>
-	<Dialog.Trigger>
+	<Dialog.Trigger asChild>
 		<Button
 			class="flex bg-blue-600 justify-center items-center fixed md:top-10 md:right-10 top-5 right-5"
 		>
