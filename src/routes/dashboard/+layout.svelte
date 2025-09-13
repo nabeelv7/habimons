@@ -8,10 +8,10 @@
 
 <div class="flex">
 	<Sidebar />
-	<div class="flex flex-col">
-		<ScrollArea class="w-full">
+	<div class="flex flex-col w-full">
+		<div class="w-full md:pl-28 overflow-y-scroll">
 			{@render children()}
-		</ScrollArea>
+		</div>
 		<div class="md:hidden flex py-15"></div>
 	</div>
 </div>

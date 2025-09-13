@@ -12,7 +12,9 @@
     md:py-20 py-3 md:px-0 px-5
     gap-6 items-center justify-center
     md:w-28 w-full
-    md:min-h-screen fixed bottom-0 md:static text-sidebar-foreground max-md:justify-between max-md:px-10 z-999"
+    md:h-screen h-auto
+    fixed md:fixed bottom-0 md:top-0 left-0
+    text-sidebar-foreground z-50 max-md:justify-between max-md:px-10"
 >
 	{#each links as link}
 		<a
@@ -20,7 +22,7 @@
 			href={link.href}
 		>
 			<div
-				class="aspect-square p-3 rounded-full bg-sidebar-accent drop-shadow-ms shadow-xs shadow-ring text-3xl flex justify-center items-center"
+				class="aspect-square p-3 rounded-full bg-sidebar-accent drop-shadow-md text-3xl flex justify-center items-center"
 			>
 				{link.icon}
 			</div>

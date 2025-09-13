@@ -12,7 +12,7 @@
 	>
 
 	{#if user}
-		<Button href="/dashboard">&larr; Dashboard</Button>
+		<Button href="/dashboard/habimons">&larr; Dashboard</Button>
 	{:else}
 		<Button href="/signin">Sign in &rarr;</Button>
 	{/if}
