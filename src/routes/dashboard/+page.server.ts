@@ -109,7 +109,7 @@ export const actions: Actions = {
 
 			// increase user gems
 			if (daysThisWeek.length > 0) {
-				user_gems = user_gems + 3 * daysThisWeek;
+				user_gems = user_gems + 3 * daysThisWeek.length;
 			} else {
 				user_gems = user_gems + 2;
 			}
