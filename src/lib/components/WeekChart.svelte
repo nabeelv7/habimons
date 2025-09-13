@@ -36,7 +36,7 @@
 				plugins: {
 					legend: { display: false },
 					tooltip: {
-						enabled: false, // hide tooltip if not needed
+						enabled: true, // hide tooltip if not needed
 					},
 					// @ts-ignore
 					datalabels: {
@@ -56,7 +56,7 @@
 						ticks: {
 							color: "foreground", // green, or any Tailwind color hex
 							font: {
-								size: 14, // change font size
+								size: 17, // change font size
 								family: "DM Sans Variable",
 								weight: "bold", // optional
 							},
@@ -72,7 +72,7 @@
 						chart.data.datasets.forEach((dataset, datasetIndex) => {
 							chart.getDatasetMeta(datasetIndex).data.forEach((bar, index) => {
 								if (dataset.data[index] === 1) {
-									ctx.fillStyle = "#22c55e";
+									ctx.fillStyle = "#000";
 									ctx.font = "bold 10px sans-serif";
 									ctx.textAlign = "center";
 									ctx.fillText("Done", bar.x, bar.y - 6);
