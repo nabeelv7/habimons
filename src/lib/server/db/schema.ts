@@ -5,7 +5,6 @@ import {
 	text,
 	primaryKey,
 } from "drizzle-orm/sqlite-core";
-import { seedMarketPlace } from "./seed";
 
 export const users = sqliteTable("user", {
 	id: text("id")
