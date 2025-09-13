@@ -1,7 +1,6 @@
 <script lang="ts">
 	import habimons from "$lib/habimons";
 	import type { PageProps } from "./$types";
-	import { page } from "$app/state";
 
 	let { data }: PageProps = $props();
 
@@ -24,19 +23,23 @@
 		{#each habimons as habimon}
 			<div
 				class={`min-w-30 flex justify-center items-center
-       flex-col rounded-md ${rarityColors[habimon.rarity]} shadow-sm p-5`}
+      flex-col rounded-md ${rarityColors[habimon.rarity]} shadow-sm p-5`}
 			>
-				<h1 class="text-3xl text-shadow-2xs">
-					{habimon.image}
-				</h1>
+				<h1 class="text-3xl text-shadow-2xs">{habimon.image}</h1>
 				<p>{habimon.name}</p>
 				<p>💎 {habimon.price}</p>
 				{habimon.rarity}
 
-				<form action="?/buyHabimon" method="POST">
-					<input type="hidden" name="name" value={habimon.name} />
-					<button class="mt-3! w-full!" type="submit">Buy Now</button>
-				</form>
+				{#if data?.user?.habimons?.some((h) => h.name === habimon.name)}
+					<button class="mt-3! w-full! opacity-50 cursor-not-allowed" disabled>
+						Already Owned
+					</button>
+				{:else}
+					<form action="?/buyHabimon" method="POST" class="w-full">
+						<input type="hidden" name="name" value={habimon.name} />
+						<button class="mt-3! w-full!" type="submit">Buy Now</button>
+					</form>
+				{/if}
 			</div>
 		{/each}
 	</section>

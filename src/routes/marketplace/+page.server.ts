@@ -9,10 +9,12 @@ import type { Actions } from "../$types";
 export const load = (async ({ locals }) => {
 	const session: any = await locals.auth();
 
-	const [user] = await db
-		.select()
-		.from(users)
-		.where(eq(users.email, session.user.email));
+	const user = await db.query.users.findFirst({
+		where: eq(users.email, session.user.email),
+		with: {
+			habimons: true,
+		},
+	});
 
 	return {
 		user,

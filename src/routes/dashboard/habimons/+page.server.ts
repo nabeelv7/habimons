@@ -16,13 +16,6 @@ export const load = (async ({ locals }) => {
 		},
 	});
 
-	// seeding;
-	// const habimons_load = await db
-	// 	.insert(marketPlaceTable)
-	// 	.values(habimons)
-	// 	.returning();
-	// console.log({ habimons, habimons_load });
-
 	return {
 		user,
 	};
