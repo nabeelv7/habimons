@@ -70,70 +70,76 @@
 			</button>
 		{:else}
 			<!-- drawer here -->
-			<Drawer.Root>
-				<Drawer.Trigger class="w-full">
-					<Button class="w-full">Buy Now</Button>
-				</Drawer.Trigger>
-				<Drawer.Content>
-					<Drawer.Header>
-						<Drawer.Title class="sr-only">{habimon.name}</Drawer.Title>
-						<Drawer.Description class="sr-only">
-							Purchase details for {habimon.name}
-						</Drawer.Description>
-					</Drawer.Header>
+			<div class="z-1000">
+				<Drawer.Root>
+					<Drawer.Trigger class="w-full">
+						<Button class="w-full">Buy Now</Button>
+					</Drawer.Trigger>
+					<Drawer.Content>
+						<Drawer.Header>
+							<Drawer.Title class="sr-only">{habimon.name}</Drawer.Title>
+							<Drawer.Description class="sr-only">
+								Purchase details for {habimon.name}
+							</Drawer.Description>
+						</Drawer.Header>
 
-					<!-- Content Layout -->
-					<div class="flex md:flex-row flex-col justify-center gap-6 p-4">
-						<!-- Big Emoji -->
-						<div
-							class={`shrink-0 flex justify-center items-center rounded-full ring-2 
+						<!-- Content Layout -->
+						<div class="flex md:flex-row flex-col justify-center gap-6 p-4">
+							<!-- Big Emoji -->
+							<div
+								class={`shrink-0 flex justify-center items-center rounded-full ring-2 
           ${rarityColors[habimon.rarity].ring} ${rarityColors[habimon.rarity].shadow}
           text-6xl sm:text-7xl p-5 
           w-20 h-20 sm:w-32 sm:h-32`}
-						>
-							{habimon.image}
-						</div>
+							>
+								{habimon.image}
+							</div>
 
-						<!-- Info Section -->
-						<div class="flex flex-col space-y-3 md:w-md w-full">
-							<p class="font-semibold text-2xl text-[var(--foreground)]">
-								{habimon.name}
-							</p>
-							<p class="text-lg font-medium text-[var(--foreground)]">
-								💎 {habimon.price}
-							</p>
-							<p class="text-sm text-muted-foreground max-w-md">
-								{habimon.bio}
-							</p>
-							<!-- Buy Form -->
-							<form action="?/buyHabimon" method="POST" class="mt-4 space-y-2">
-								<input type="hidden" name="name" value={habimon.name} />
-
-								<!-- Buy Now -->
-								<button
-									type="submit"
-									class={`w-full rounded-md px-4 py-2 text-sm font-medium transition hover:brightness-110 ${rarityColors[habimon.rarity].bg} ${rarityColors[habimon.rarity].text}`}
+							<!-- Info Section -->
+							<div class="flex flex-col space-y-3 md:w-md w-full">
+								<p class="font-semibold text-2xl text-[var(--foreground)]">
+									{habimon.name}
+								</p>
+								<p class="text-lg font-medium text-[var(--foreground)]">
+									💎 {habimon.price}
+								</p>
+								<p class="text-sm text-muted-foreground max-w-md">
+									{habimon.bio}
+								</p>
+								<!-- Buy Form -->
+								<form
+									action="?/buyHabimon"
+									method="POST"
+									class="mt-4 space-y-2"
 								>
-									Buy Now
-								</button>
+									<input type="hidden" name="name" value={habimon.name} />
 
-								<!-- Cancel -->
-								<Drawer.Close class="w-full">
-									<Button
-										role="button"
-										type="button"
-										class="w-full"
-										variant="secondary"
+									<!-- Buy Now -->
+									<button
+										type="submit"
+										class={`w-full rounded-md px-4 py-2 text-sm font-medium transition hover:brightness-110 ${rarityColors[habimon.rarity].bg} ${rarityColors[habimon.rarity].text}`}
 									>
-										Cancel
-									</Button>
-								</Drawer.Close>
-							</form>
+										Buy Now
+									</button>
+
+									<!-- Cancel -->
+									<Drawer.Close class="w-full">
+										<Button
+											role="button"
+											type="button"
+											class="w-full"
+											variant="secondary"
+										>
+											Cancel
+										</Button>
+									</Drawer.Close>
+								</form>
+							</div>
 						</div>
-					</div>
-					<div id="space-at-end" class="py-10"></div>
-				</Drawer.Content>
-			</Drawer.Root>
+						<div id="space-at-end" class="py-10"></div>
+					</Drawer.Content>
+				</Drawer.Root>
+			</div>
 			<!-- drawer end -->
 		{/if}
 	</div>

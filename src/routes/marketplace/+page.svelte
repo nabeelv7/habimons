@@ -11,7 +11,7 @@
 <Navbar user={data?.user} />
 
 <!-- content container -->
-<div class="flex flex-col justify-center items-center py-20 text-center gap-2">
+<div class="flex flex-col justify-center items-center py-40 text-center gap-2">
 	<!-- marketplace heading -->
 	<div class="flex flex-col">
 		<h1 class="text-7xl drop-shadow-md drop-shadow-yellow-400" id="coin">🪙</h1>

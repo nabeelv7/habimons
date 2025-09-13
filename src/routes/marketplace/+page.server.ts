@@ -51,6 +51,7 @@ export const actions: Actions = {
 				image: habimon.image,
 				price: habimon.price,
 				rarity: habimon.rarity,
+				bio: habimon.bio,
 				user_id: user.id,
 			});
 

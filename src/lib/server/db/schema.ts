@@ -126,6 +126,7 @@ export const habimonsTable = sqliteTable("habimons", {
 	image: text("image").notNull(),
 	price: integer("price").notNull(),
 	rarity: text("rarity").notNull(),
+	bio: text("bio").notNull(),
 	user_id: text("user_id")
 		.references(() => users.id, { onDelete: "cascade" })
 		.notNull(),
