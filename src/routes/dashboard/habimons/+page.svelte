@@ -7,7 +7,7 @@
 	console.log(user);
 </script>
 
-<main class="w-full p-10">
+<main class="w-full md:p-10 p-8">
 	<nav
 		class="flex md:flex-row flex-col gap-5 justify-between items-center w-full"
 	>
