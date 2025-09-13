@@ -6,8 +6,17 @@ import { eq } from "drizzle-orm";
 import { db } from "$lib/server/db";
 import type { Actions } from "../$types";
 
-export const load = (async () => {
-	return {};
+export const load = (async ({ locals }) => {
+	const session: any = await locals.auth();
+
+	const [user] = await db
+		.select()
+		.from(users)
+		.where(eq(users.email, session.user.email));
+
+	return {
+		user,
+	};
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {

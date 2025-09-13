@@ -1,6 +1,7 @@
 <script lang="ts">
 	import habimons from "$lib/habimons";
 	import type { PageProps } from "./$types";
+	import { page } from "$app/state";
 
 	let { data }: PageProps = $props();
 
@@ -17,6 +18,7 @@
 	<div>
 		<h1 class="text-5xl animate-bounce">💎</h1>
 		<h2>Welcome to marketplace</h2>
+		<h3>💎 {data?.user?.gems}</h3>
 	</div>
 	<section class="flex gap-2 flex-wrap mt-5" id="habimons-marketplace-grid">
 		{#each habimons as habimon}

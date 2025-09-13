@@ -2,8 +2,6 @@
 	// @ts-nocheck
 	let { data } = $props();
 	const habit = data.habit;
-	console.log("HABIT", data.habit);
-	console.log("----------------------");
 </script>
 
 <div class="flex flex-col p-10">
