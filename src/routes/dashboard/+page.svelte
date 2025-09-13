@@ -3,7 +3,6 @@
 
 	// @ts-nocheck
 	import Button from "$lib/components/ui/button/button.svelte";
-	import Checkbox from "$lib/components/ui/checkbox/checkbox.svelte";
 	import * as Dialog from "$lib/components/ui/dialog/index.js";
 	import Input from "$lib/components/ui/input/input.svelte";
 	import Label from "$lib/components/ui/label/label.svelte";
