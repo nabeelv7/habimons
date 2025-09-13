@@ -91,6 +91,10 @@
 					<div class="flex flex-col gap-1 text-center md:text-left">
 						<h1 class="text-3xl md:text-4xl font-bold">{user.name}</h1>
 						<p class="opacity-80">{user.email}</p>
+						<a
+							class="text-blue-600 underline opacity-80"
+							href="/signin/timezone">{user.timezone}</a
+						>
 						<Button class="mt-2" onclick={() => signOut()} variant="destructive"
 							>Logout</Button
 						>
