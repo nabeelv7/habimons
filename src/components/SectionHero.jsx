@@ -26,7 +26,7 @@ export default function SectionHero() {
         <img
           className="w-full md:border-4 border-2 rounded-md"
           src="/hero-banner.png"
-          alt="Banner image of habitszoo"
+          alt="The hero section banner image of habitszoo"
         />
       </div>
     </section>
