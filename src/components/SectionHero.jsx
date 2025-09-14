@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import VideoHero from "./VideoHero";
 
 export default function SectionHero() {
   return (
@@ -23,11 +24,7 @@ export default function SectionHero() {
 
       {/* image */}
       <div className="relative max-w-screen-xl mx-auto max-lg:px-2">
-        <img
-          className="w-full md:border-4 border-2 rounded-md"
-          src="/hero-banner.png"
-          alt="The hero section banner image of habitszoo"
-        />
+        <VideoHero />
       </div>
     </section>
   );
