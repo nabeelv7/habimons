@@ -17,7 +17,7 @@ export default function Signin() {
       >
         {/* sign in box */}
         <div className="rounded-2xl border border-base-content/20 p-5 bg-base-200 md:max-w-md w-full flex flex-col">
-          <h1 className="text-3xl font-bold">🐐 HabitsZoo</h1>
+          <h1 className="text-3xl font-bold">🐫 HabitsZoo</h1>
           <h2 className="opacity-85 mt-1">
             Sign in to HabitsZoo to start building habits!
           </h2>
