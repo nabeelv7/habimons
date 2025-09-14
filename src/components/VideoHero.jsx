@@ -15,6 +15,7 @@ export default function VideoHero() {
       <video
         ref={videoRef}
         src="/hero-video.mp4"
+        muted
         controls
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
