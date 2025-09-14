@@ -1,22 +1,24 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function VideoHero() {
   const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef(null);
+
+  const handlePlay = () => {
+    setIsPlaying(true);
+    videoRef.current?.play(); // play the video
+  };
 
   return (
-    <div className="relative w-full aspect-video">
-      {/* Video iframe always mounted */}
-      <iframe
-        width="100%"
-        height="100%"
-        src={`https://www.youtube.com/embed/LLtAvizS2BE?autoplay=${
-          isPlaying ? 1 : 0
-        }`}
-        title="YouTube video player"
-        className="absolute top-0 left-0 w-full h-full border-0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
+    <div className="relative w-full aspect-video overflow-hidden">
+      {/* Video always mounted but controlled */}
+      <video
+        ref={videoRef}
+        src="/hero-video.mp4"
+        muted
+        loop
+        className="absolute top-0 left-0 w-full h-full object-cover"
+      />
 
       {/* Thumbnail + play button overlay */}
       {!isPlaying && (
@@ -26,7 +28,7 @@ export default function VideoHero() {
             alt="Video thumbnail"
             className="absolute top-0 left-0 w-full h-full object-cover"
           />
-          <PlayIcon onClick={() => setIsPlaying(true)} />
+          <PlayIcon onClick={handlePlay} />
         </>
       )}
     </div>
