@@ -23,7 +23,7 @@ export default function SectionHero() {
       </div>
 
       {/* image */}
-      <div className="relative max-w-screen-xl mx-auto max-lg:px-2">
+      <div className="relative max-w-screen-xl mx-auto">
         <VideoHero />
       </div>
     </section>
