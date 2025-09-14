@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function SectionHero() {
   return (
     <section id="hero" className="text-center py-20 space-y-13">
@@ -14,9 +16,9 @@ export default function SectionHero() {
           Complete habits, Earn gems, Buy habimons and{" "}
           <br className="max-md:hidden" /> stay motivated on your journey!
         </p>
-        <button className="btn btn-primary mt-5 shadow-inner">
+        <Link to="/signin" className="btn btn-primary mt-5 shadow-inner">
           GET STARTED &rarr;
-        </button>
+        </Link>
       </div>
 
       {/* image */}
