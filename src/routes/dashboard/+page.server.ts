@@ -9,16 +9,40 @@ import getHabitDaysThisWeek from "$lib/defs/days-this-week";
 const TODAY_START_UTC = Math.floor(Date.now() / 86_400_000) * 86_400_000;
 const TODAY_END_UTC = TODAY_START_UTC + 86_400_000;
 
-const now = new Date();
-// Start of week (Monday)
-const startOfWeek = new Date(now);
-startOfWeek.setHours(0, 0, 0, 0);
-startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay() + 1);
+// const now = new Date();
+// // Start of week (Monday)
+// const startOfWeek = new Date(now);
+// startOfWeek.setHours(0, 0, 0, 0);
+// startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay() + 1);
 
-// End of week (Sunday)
-const endOfWeek = new Date(startOfWeek);
-endOfWeek.setDate(startOfWeek.getDate() + 6);
-endOfWeek.setHours(23, 59, 59, 999);
+// // End of week (Sunday)
+// const endOfWeek = new Date(startOfWeek);
+// endOfWeek.setDate(startOfWeek.getDate() + 6);
+// endOfWeek.setHours(23, 59, 59, 999);
+
+function startOfUTCDay(d: Date) {
+	return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
+}
+function endOfUTCDay(d: Date) {
+	return Date.UTC(
+		d.getUTCFullYear(),
+		d.getUTCMonth(),
+		d.getUTCDate(),
+		23,
+		59,
+		59,
+		999
+	);
+}
+
+// Start of week (Monday, UTC)
+const now = new Date();
+const day = now.getUTCDay() || 7; // Sunday=0 → 7
+const monday = new Date(
+	Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - day + 1)
+);
+const startOfWeek = startOfUTCDay(monday);
+const endOfWeek = endOfUTCDay(new Date(monday.getTime() + 6 * 86_400_000));
 
 export const load = (async ({ locals }) => {
 	const session = await locals.auth();
@@ -34,8 +58,8 @@ export const load = (async ({ locals }) => {
 		with: {
 			days: {
 				where: and(
-					gte(daysTable.date, startOfWeek.getTime()),
-					lt(daysTable.date, endOfWeek.getTime())
+					gte(daysTable.date, startOfWeek),
+					lt(daysTable.date, endOfWeek)
 				),
 			},
 		},

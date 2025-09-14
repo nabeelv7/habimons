@@ -9,6 +9,8 @@
 	import type { PageProps } from "./$types";
 
 	let { data }: PageProps = $props();
+
+	console.log("HABITS", data.habits);
 </script>
 
 <main class="w-full md:p-10 p-8">
@@ -89,11 +91,11 @@
 									input?.form?.requestSubmit();
 								}}
 								checked={// ✅ true if today exists
-								habit.days.some(
-									(day) =>
-										new Date(day.date).toDateString() ===
-										new Date().toDateString(),
-								) ||
+								habit.days.some((day) => {
+									const dayStr = new Date(day.date).toISOString().split("T")[0];
+									const todayStr = new Date().toISOString().split("T")[0];
+									return dayStr === todayStr;
+								}) ||
 									// ✅ or true if weekly quota is full
 									habit.days.length >= habit.days_of_week}
 								disabled={habit.days.length >= habit.days_of_week}
